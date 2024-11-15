@@ -59,4 +59,8 @@ def read_xml(filename):
 
     return vehicles
 
+def load_vehicles_from_json(filename):
+    return read_json(filename)
 
+def load_vehicles_from_xml(filename):
+    return read_xml(filename)
