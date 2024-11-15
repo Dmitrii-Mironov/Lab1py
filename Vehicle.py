@@ -83,3 +83,12 @@ class Van(Vehicle): #фургон
     def get_info(self):
         return f" {self.make} {self.model} {self.year} {self.color} with {self._cargo_capacity} cargo_capacity"
 
+class Scooter(Vehicle):
+    def __init__(self, make: str, model: str, year: int, color: str, battery_capacity: int) -> None:
+        super().__init__(make, model, year, color)
+        self._battery_capacity: int = battery_capacity #емкость аккумулятора
+    def charge_battery(self) -> str:
+        return "Scooter battery charged."
+    def get_info(self):
+        return f" {self.make} {self.model} {self.year} {self.color} with {self._battery_capacity} battery_capacity"
+
