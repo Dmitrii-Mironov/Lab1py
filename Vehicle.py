@@ -57,3 +57,11 @@ class Bicycle(Vehicle):
     def get_info(self):
         return f" {self.make} {self.model} {self.year} {self.color} with {self._gear_count} gear_count"
 
+class Bus(Vehicle):
+    def __init__(self, make: str, model: str, year: int, color: str, seats: int) -> None:
+        super().__init__(make, model, year, color)
+        self._seats: int = seats #кол-во мест
+    def open_doors(self) -> str:
+        return "Bus doors opened."
+    def get_info(self):
+        return f" {self.make} {self.model} {self.year} {self.color} with {self._seats} seats"
