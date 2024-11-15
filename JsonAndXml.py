@@ -67,3 +67,6 @@ def load_vehicles_from_xml(filename):
 
 def save_vehicles_to_json(vehicles, filename):
     write_json(filename, vehicles)
+
+def save_vehicles_to_xml(vehicles, filename):
+    write_xml(filename, vehicles)
