@@ -65,3 +65,21 @@ class Bus(Vehicle):
         return "Bus doors opened."
     def get_info(self):
         return f" {self.make} {self.model} {self.year} {self.color} with {self._seats} seats"
+
+class Van(Vehicle): #фургон
+    def __init__(self, make: str, model: str, year: int, color: str, cargo_capacity: int) -> None:
+        super().__init__(make, model, year, color)
+        self._cargo_capacity: int = cargo_capacity #грузоподьемность
+    def load_cargo(self, weight: int) -> Union[str, None]:
+        try:
+            if weight <= 0:
+                raise VehicleError("Weight must be greater than zero.")
+            if weight <= self._cargo_capacity:
+                return f"Loaded {weight} kg of cargo."
+            else:
+                raise VehicleError("Cargo exceeds capacity!")
+        except VehicleError as e:
+            return str(e)
+    def get_info(self):
+        return f" {self.make} {self.model} {self.year} {self.color} with {self._cargo_capacity} cargo_capacity"
+
