@@ -64,3 +64,6 @@ def load_vehicles_from_json(filename):
 
 def load_vehicles_from_xml(filename):
     return read_xml(filename)
+
+def save_vehicles_to_json(vehicles, filename):
+    write_json(filename, vehicles)
