@@ -92,3 +92,12 @@ class Scooter(Vehicle):
     def get_info(self):
         return f" {self.make} {self.model} {self.year} {self.color} with {self._battery_capacity} battery_capacity"
 
+class Train(Vehicle):
+    def __init__(self, make: str, model: str, year: int, color: str, car_count: int) -> None:
+        super().__init__(make, model, year, color)
+        self._car_count: int = car_count #кол - во вагонов
+    def whistle(self) -> str:
+        return "Choo choo!"
+    def get_info(self):
+        return f" {self.make} {self.model} {self.year} {self.color} with {self._car_count} car_count"
+
