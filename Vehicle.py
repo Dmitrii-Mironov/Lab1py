@@ -101,3 +101,39 @@ class Train(Vehicle):
     def get_info(self):
         return f" {self.make} {self.model} {self.year} {self.color} with {self._car_count} car_count"
 
+class VehicleManager:
+    def __init__(self) -> None:
+        self.vehicles: List[Vehicle] = []
+
+    def create_vehicle(self, vehicle: Vehicle) -> str:
+        self.vehicles.append(vehicle)
+        return f"{vehicle.make} {vehicle.model} added"
+
+    def read_vehicles(self) -> List[str]:
+        return [f"{v.year} {v.make} {v.model} ({v.color})" for v in self.vehicles] #генерптор списка
+
+    def update_vehicle(self, index: int, make: Optional[str] = None, model: Optional[str] = None,
+                       year: Optional[int] = None, color: Optional[str] = None,
+                       payload_capacity: Optional[int] = None) -> str:
+        try:
+            vehicle = self.vehicles[index]
+            if make:
+                vehicle.make = make
+            if model:
+                vehicle.model = model
+            if year:
+                vehicle.year = year
+            if color:
+                vehicle.color = color
+            if payload_capacity is not None and isinstance(vehicle, Truck):
+                vehicle.payload_capacity = payload_capacity
+            return f"Vehicle at index {index} updated"
+        except IndexError:
+            return "Vehicle not found"
+
+    def delete_vehicle(self, index: int) -> str:
+        try:
+            removed_vehicle = self.vehicles.pop(index)
+            return f"{removed_vehicle.make} {removed_vehicle.model} removed."
+        except IndexError:
+            return "Vehicle not found"
