@@ -36,3 +36,14 @@ class Truck(Vehicle): #грузовик
             return str(e)
     def get_info(self):
         return f" {self.make} {self.model} {self.year} {self.color} with {self._payload_capacity} doors"
+
+class Motorcycle(Vehicle):
+    def __init__(self, make: str, model: str, year: int, color: str, engine_cc: int) -> None:
+        super().__init__(make, model, year, color)
+        self.type = "Motorcycle"
+        self.engine_cc: int = engine_cc #двигатель куб.см
+    def rev_engine(self) -> str:
+        return "Vroom vroom!"
+
+    def get_info(self):
+        return f" {self.type} {self.make} {self.model} {self.year} {self.color}with {self.engine_cc} engine_cc"
