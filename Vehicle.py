@@ -47,3 +47,13 @@ class Motorcycle(Vehicle):
 
     def get_info(self):
         return f" {self.type} {self.make} {self.model} {self.year} {self.color}with {self.engine_cc} engine_cc"
+
+class Bicycle(Vehicle):
+    def __init__(self, make: str, model: str, year: int, color: str, gear_count: int) -> None:
+        super().__init__(make, model, year, color)
+        self._gear_count: int = gear_count #кол-во передач
+    def ring_bell(self) -> str:
+        return "Ring ring!"
+    def get_info(self):
+        return f" {self.make} {self.model} {self.year} {self.color} with {self._gear_count} gear_count"
+
