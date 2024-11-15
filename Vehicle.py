@@ -137,3 +137,33 @@ class VehicleManager:
             return f"{removed_vehicle.make} {removed_vehicle.model} removed."
         except IndexError:
             return "Vehicle not found"
+
+def main() -> None:
+    from JsonAndXml import load_vehicles_from_json, load_vehicles_from_xml, save_vehicles_to_json, save_vehicles_to_xml
+
+    # Создание списка транспортных средств
+    vehicles = [
+        Car(make="Toyota", model="Camry", year=2020, color="White", doors=4),
+        Motorcycle(make="Yamaha", model="YZF-R3", year=2021, color="Black", engine_cc=800)
+    ]
+
+    # Сохранение в JSON
+    save_vehicles_to_json(vehicles, 'vehicles.json')
+
+    # Сохранение в XML
+    save_vehicles_to_xml(vehicles, 'vehicles.xml')
+
+    # Загрузка из JSON
+    loaded_vehicles_json = load_vehicles_from_json("vehicles.json")
+    print("Loaded from JSON:")
+    for vehicle in loaded_vehicles_json:
+        print(vehicle.get_info())
+
+    # Загрузка из XML
+    loaded_vehicles_xml = load_vehicles_from_xml("vehicles.xml")
+    print("\nLoaded from XML:")
+    for vehicle in loaded_vehicles_xml:
+        print(vehicle.get_info())
+
+if __name__ == "__main__":
+    main()
